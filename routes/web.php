@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\{ProgramaController, ActividadController};
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+/**************  Rutas del programa ****************/
+Route::resource('programa', ProgramaController::class);
+Route::get('programa\eleminar\{id}', [ProgramaController::class, 'eleminarPrograma'])->name('eleminarPrograma');
