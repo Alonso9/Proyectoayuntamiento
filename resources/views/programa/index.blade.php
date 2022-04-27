@@ -5,7 +5,7 @@
 @section('contenido')
 
     <div class="container">
-        <h2 align='center'>Gestión de Programas creados</h2>
+        <h2 align='center'>Gestión de Programas del Ayuntamiento de Manzanillo</h2>
         <div class="row">
             <div class="col-lx-12">
                 @csrf
@@ -60,7 +60,7 @@
                                 <td>{{$item->id}}</td>
                                 <td>{{$item->nombre}}</td>
                                 <td>{{$item->fecha}}</td>
-                                {{-- <td><a href="{{route('actividadesPrueba', ['programa_id' => $item->id] )}}">Actividades</a></td> --}}
+                                <td><a href="{{route('actividadesPrueba', ['programa_id' => $item->id] )}}">Actividades</a></td>
                                 {{-- <td><a href="{{ route('detalleActividad', $item->id) }}">Detalles</a></td> --}}
                             </tr>
                              {{-- @include('programa.delete') --}}

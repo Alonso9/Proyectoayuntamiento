@@ -113,7 +113,6 @@ class ProgramaController extends Controller
     public function eleminarPrograma($id)
     {
         $programa = Programa::findOrFail($id);
-        // $programa->actividades()->deteach();
         $programa->delete();
         return redirect()->route('programa.index');
     }

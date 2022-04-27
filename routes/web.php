@@ -20,3 +20,12 @@ Route::get('/', function () {
 /**************  Rutas del programa ****************/
 Route::resource('programa', ProgramaController::class);
 Route::get('programa\eleminar\{id}', [ProgramaController::class, 'eleminarPrograma'])->name('eleminarPrograma');
+
+
+/************ Rutas de la actividad ***************/
+Route::resource('actividad', ActividadController::class);
+Route::get('programa/actividades/{programa_id}', [ActividadController::class, 'actividadesPrueba'])->name('actividadesPrueba');
+Route::get('programa/actividades/{programa_id}/detalles', [ActividadController::class, 'detalleActividad'])->name('detalleActividad');
+Route::get('programa/actividades/{programa_id}/crearActividad', [ActividadController::class, 'crearActividad'])->name('crearActividad');
+Route::get('programa/actividades/eleminar/{id}', [ActividadController::class, 'eleminarActividad'])->name('eleminarActividad');
+
