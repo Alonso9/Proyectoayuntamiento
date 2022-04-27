@@ -21,7 +21,8 @@ class ActividadController extends Controller
         $programa_id = trim($request->get('programa_id'));
         $nombre = Programa::findOrFail($programa_id);
 
-        $actividades = DB::table('actividades')->select('id','programa_id','actividad','descripcion','responsable','fecha')
+        $actividades = DB::table('actividades')->join('departamentos','departamentos.id','actividades.responsable')
+                                    ->select('actividades.*','departamentos.departamentos')
                                     ->where('programa_id','=', $nombre->id)
                                     ->where('actividad', 'LIKE', '%'.$actividad . '%')
                                     ->orderBy('actividad', 'asc')
@@ -120,7 +121,12 @@ class ActividadController extends Controller
 
     public function actividadesPrueba($programa_id)
     {
-        $actividades = Actividad::where('programa_id', $programa_id)->paginate(10);
+        // $actividades = Actividad::where('programa_id', $programa_id)->paginate(10);
+        $actividades = DB::table('actividades')->join('departamentos','departamentos.id','actividades.responsable')
+                                    ->select('actividades.*','departamentos.departamentos')
+                                    ->where('programa_id','=', $programa_id)
+                                    ->orderBy('actividad', 'asc')
+                                    ->paginate(10);
         $nombre = Programa::findOrFail($programa_id);
         // $responsable = Departamentos::Where($actividades->responsable);
 

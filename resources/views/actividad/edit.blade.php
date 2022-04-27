@@ -17,15 +17,15 @@
             <div class="form-group">
                 <label>Eliga una nueva dependencia:</label>
                 <select name="departamento" id="">
-                    <option value="{{$responsable->departamentos}}">{{$responsable->departamentos}}</option>
+                    {{-- <option value="{{$responsable->id}}">{{$responsable->departamentos}}</option> --}}
                     @foreach ($departamentos as $departamento)
-                        <option value="{{ $departamento->id }}">{!! $departamento->departamentos !!}</option>
+                        <option value="{{ $departamento->id }}"@if ($departamento->id == $actividad->responsable) selected @endif>{!! $departamento->departamentos !!}</option>
                     @endforeach
                 </select>
             </div>
             <div class="form-group">
                 <br><label for="descripcion">Nueva descripcion de la actividad a crear:</label><br>
-                <textarea name="descripcion" id="nombre_programa"  cols="30" rows="10" required></textarea>
+                <textarea name="descripcion" id="nombre_programa"  cols="30" rows="10" required>{{$actividad->descripcion}}</textarea>
             </div>
             <div class="form-group">
                 <br><input type="submit" class="btn btn-primary" value="Guardar">

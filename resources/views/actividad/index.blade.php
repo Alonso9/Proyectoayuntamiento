@@ -59,7 +59,7 @@
                                 <td>{{$item->programa_id}}</td>
                                 <td>{{$item->actividad}}</td>
                                 <td>{{$item->descripcion}}</td>
-                                <td>{{$item->responsable}}</td>
+                                <td>{{$item->departamentos}}</td>
                                 <td>{{$item->fecha}}</td>
                                 <td><a href="{{ route('detalleActividad', $nombre->id) }}">Detalles</a></td>
                             </tr>
