@@ -1,12 +1,16 @@
 /* -------------------HEADER----------------------*/
 
-*{
+* {
     margin: 0;
     padding: 0;
     font-family: "Montserrat";
 }
 
-#head{
+body {
+    background: url('https://manzanillo.gob.mx/assets/img/textura_1.png');
+}
+
+#head {
     background: #862628;
     height: 100px;
     display: flex;
@@ -15,31 +19,31 @@
     padding: 0 5vw;
 }
 
-#head-img{
+#head-img {
     width: 100px;
     height: 80px;
     object-fit: cover;
 }
 
-#link a{
+#link a {
     text-decoration: none;
     color: #fff;
     font-weight: bold;
 }
 
-#link a:nth-child(1){
+#link a:nth-child(1) {
     margin-right: 3vw;
 }
 
 /* -------------------LOGIN------------------------*/
 
-#container{
+#container {
     margin-top: 20px;
     display: flex;
     justify-content: center;
 }
 
-#main{
+#main {
     border: 1px sol #ddd;
     height: 430px;
     width: 400px;
@@ -52,11 +56,11 @@
     box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.247);
 }
 
-#main-img{
+#main-img {
     width: 200px;
 }
 
-#main-title{
+#main-title {
     font-size: 26px;
     margin-top: 40px;
     color: #5b5a5d;
@@ -65,7 +69,7 @@
 
 
 
-#main input{
+#main input {
     width: 100%;
     border-radius: 5px;
     padding: 10px 10px;
@@ -73,7 +77,7 @@
     margin-bottom: 20px;
 }
 
-#main-loginbtn{
+#main-loginbtn {
     margin-top: 20px;
     padding: 10px 30px;
     background: #862628;
@@ -84,3 +88,217 @@
     font-weight: bold;
 }
 
+
+.container {
+    display: flex;
+    padding: 2vw;
+    justify-content: center;
+}
+
+.aside {
+    width: 20vw;
+    flex-direction: column;
+    padding: 10px 20px;
+    justify-content: center;
+    border-width: 1px;
+    border-color: #5b5a5d;
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.20);
+    border-radius: 10px;
+    background-color: #FFF;
+    margin-right: 20px;
+    height: 10vw;
+}
+
+.tituloArea {
+    font-weight: bold;
+    text-align: center;
+    text-emphasis-color: black;
+    padding: 30px;
+    font-size: 40px;
+    margin: 0px 15vw;
+}
+
+.btnNuevo {
+    background-color: #862628;
+    width: 100%;
+    height: 2.5vw;
+    border-width: 1px;
+    border-radius: 10px;
+    display: flex;
+    margin-top: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+#iconoNuevo {
+    font-size: 16px;
+    margin-right: 20px;
+    color: white;
+}
+
+.btnNuevoTxt {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.btnNuevoTxt:hover {
+    color: #AAA;
+}
+
+.inputContainer {
+    margin-top: 1vw;
+    width: 100%;
+    height: 2.5vw;
+    border-width: 1px;
+    border-color: #0b002200;
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.20);
+    border-radius: 15px;
+    color: black;
+    font-weight: bolder;
+    padding: 7px;
+    margin-bottom: 10px;
+}
+
+.inputPrograma {
+    height: 100%;
+    width: 12vw;
+    border-width: 0px;
+    font-weight: bolder;
+}
+
+.inputPrograma:focus{
+    outline: none;
+}
+
+#iconoBuscar{
+    font-size: 20px;
+    margin-left: 2vw;
+    color: #862628;
+    cursor: pointer;
+}
+
+table{
+    width: 53vw;
+    margin-left: 1vw;
+}
+
+th{
+    font-weight:900;
+    font-size: large;
+}
+
+.section{
+    display: flex;
+    width: 56vw;
+    border-width: 1px;
+    border-color: #0b002200;
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.20);
+    border-radius: 15px;
+    color: black;
+    padding: 5px;
+    background-color: #FFF;
+    padding-bottom: 20px;
+}
+
+
+#msgNoProgramas{
+    margin-top: 20px;
+    color: #862628;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+
+.opcionesContainer{
+    display: flex;   
+}
+
+.resultadoTr td{
+    color: black;
+    padding: 10px;
+    text-align: center;
+    justify-content: center;
+    height: 100%;
+    font-weight: 600;
+    align-self: center;
+    align-items: center;
+    padding-top: 15px;
+}
+
+.tdPrueba{  
+    border-width: 1px 5px;
+    border-color: #0b002200;
+    border-radius: 15px;
+    background-color: #b5b5b563;
+    color: black;
+    padding: 10px;
+    text-align: center;
+}
+
+.btnVer{
+    background-color: #862628;
+    width: 100%;
+    height: 2.5vw;
+    border-width: 1px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+}
+
+.btnVerTxt {
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.btnVerTxt:hover {
+    color: #AAA;
+}
+
+#iconoVer{
+    font-size: 13px;
+    margin-right: 10px;
+    color: white;
+}
+
+.btnEditar {
+    background-color: #862628;
+    width: 50%;
+    height: 2.5vw;
+    border-width: 1px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px;
+}
+
+.btnBorrar{
+    background-color: #862628;
+    width: 50%;
+    height: 2.5vw;
+    border-width: 1px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.formulario{
+    width: 40vw;
+    flex-direction: column;
+    padding: 10px 20px;
+    justify-content: center;
+    border-width: 1px;
+    border-color: #5b5a5d;
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.20);
+    border-radius: 10px;
+    background-color: #FFF;
+    margin-right: 20px;
+    height: 10vw;
+}

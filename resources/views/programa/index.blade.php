@@ -4,97 +4,77 @@
 
 @section('contenido')
 
-    <div class="container">
-        <h2 align='center'>Gestión de Programas del Ayuntamiento de Manzanillo</h2>
-        <div class="row">
-            <div class="col-lx-12">
-                @csrf
-                <form action="{{route('programa.index')}}" method="GET">
-                    <div class="form-row">
-                        <div class="col-sm-4 my-1">
-                            <label>Buscar Programa: </label>
-                            <input type="text" class="form-control" name="nombre" placeholder="Nombre del programa">
-                        </div>
-                        <div class="col-auto my-1">
-                            <input type="submit" class="btn btn-primary" value="Buscar">
-                            <a href="{{route('programa.create')}}" class="btn btn-success">Nuevo</a>
-                        </div>
+
+<h2 class="tituloArea">Gestión de Programas del Ayuntamiento de Manzanillo</h2>
+<div class="container">
+    <div class="aside">
+        <div>
+            @csrf
+            <form action="{{route('programa.index')}}" method="GET">
+                <div>
+                    <div class="btnNuevo">
+                        <i id="iconoNuevo" class="fa-solid fa-file-circle-plus"></i>
+                        <a class='btnNuevoTxt' href="{{route('programa.create')}}">Crear nuevo programa</a>
                     </div>
-                </form>
-            </div>   
-            <div class="col-lx-12">
-                <div class="table-respon">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>Opciones</th>
-                                <th>ID</th>
-                                <th>Nombre</th>
-                                <th>Fecha</th>
-                                <th>Actividades</th>
-                                <th>Detalles</th>
+                    <div class='inputContainer'>
+                        <input type="text" class="inputPrograma" placeholder="Busca un programa" name="nombre">
+                        <i id="iconoBuscar" class="fa-solid fa-magnifying-glass-arrow-right" value="Buscar"></i>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="section">
+        <div>
+            <div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="tdPrueba">Programa</th>
+                            <th class="tdPrueba">Fecha</th>
+                            <th class="tdPrueba">Actividades</th>
+                            <th class="tdPrueba">Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (count($programas)<=0) <tr>
+                            <p></p>
+                            <td id="msgNoProgramas" colspan="20">No hay programas</td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            @if (count($programas)<=0)
-                                <tr>
-                                    <td colspan="8">No hay resultados</td>
-                                </tr>
-                                
                             @else
                             @foreach ($programas as $item)
-                            <tr>
-                                <td><a href="{{route('programa.edit',$item->id)}}" class="btn btn-warning btn-sm">Editar</a> 
-                                    {{-- <a href="{{route('programa.destroy',$item->id)}}" class="btn btn-warning btn-sm">Borrar</a>  --}}
-                                    <form action="{{route('eleminarPrograma',$item->id)}}"">
-                                        {{-- <input type="hidden" name="_token" value="{{ csrf_token() }}"> --}}
-                                        @csrf
-                                        @method('DELETE')
-                                        <input type="submit" class="btn btn-danger btn-sm" value="Borrar">
-                                    </form>
-                                    <!-- Button trigger modal -->
-                                    {{-- <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="delete_modal_programa_{{$item->id}}">
-                                        Borrar
-                                    </button> --}}
-                                </td>
-                                <td>{{$item->id}}</td>
+                            <p></p>
+                            <tr class="resultadoTr">
                                 <td>{{$item->nombre}}</td>
                                 <td>{{$item->fecha}}</td>
-                                <td><a href="{{route('actividadesPrueba', ['programa_id' => $item->id] )}}">Actividades</a></td>
-                                {{-- <td><a href="{{ route('detalleActividad', $item->id) }}">Detalles</a></td> --}}
+                                <td>
+                                    <div class="btnVer">
+                                        <i id="iconoVer" class="fa-solid fa-eye"></i>
+                                        <a class="btnVerTxt" href="{{route('actividadesPrueba', ['programa_id' => $item->id] )}}">Ver actividades</a>
+                                    </div>
+                                </td>
+                                <td class="opcionesContainer">
+                                    <div class="btnEditar">
+                                        <i id="iconoVer" class="fa-solid fa-file-pen"></i>
+                                        <a class="btnVerTxt" href="{{route('programa.edit',$item->id)}}">Editar</a>
+                                    </div>
+
+                                    <form class="btnEditar" action="{{route('eleminarPrograma',$item->id)}}">
+                                        @csrf
+                                        <i id="iconoVer" class="fa-solid fa-delete-left"></i>
+                                        <a class="btnVerTxt" href="{{route('eleminarPrograma',$item->id)}}}">Eliminar</a>
+
+                                    </form>
+                                </td>
                             </tr>
-                             {{-- @include('programa.delete') --}}
+
+
                             @endforeach
                             @endif
-                        </tbody>
-                    </table>
-                    {{-- {{$programas->links()}} --}}
-                </div>
-                <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#label">
-    Launch demo modal
-    </button>
-
-    <!-- Modal -->
-    <div class="modal fade" id="label" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-    <div class="modal-content">
-        <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-        ...
-        </div>
-        <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-    </div>
-    </div>
-    </div>
+                    </tbody>
+                </table>
             </div>
+            @endsection
         </div>
     </div>
-    
-@endsection
+</div>
