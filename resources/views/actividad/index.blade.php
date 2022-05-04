@@ -61,7 +61,7 @@
                                 <td>{{$item->descripcion}}</td>
                                 <td>{{$item->departamentos}}</td>
                                 <td>{{$item->fecha}}</td>
-                                <td><a href="{{ route('detalleActividad', $nombre->id) }}">Detalles</a></td>
+                                <td><a href="{{route('detallesPrograma',$nombre->id)}}}" >Detalles</a></td>
                             </tr>
                             @endforeach
                             @endif

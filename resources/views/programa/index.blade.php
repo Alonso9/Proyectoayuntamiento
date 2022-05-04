@@ -34,6 +34,7 @@
                             <th class="tdPrueba">Fecha</th>
                             <th class="tdPrueba">Actividades</th>
                             <th class="tdPrueba">Opciones</th>
+                            <th class="tdPrueba">Detalles</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -66,9 +67,9 @@
 
                                     </form>
                                 </td>
+                                @csrf
+                                <td><a href="{{route('detallesPrograma',$item->id)}}}" >Detalles</a></td>
                             </tr>
-
-
                             @endforeach
                             @endif
                     </tbody>

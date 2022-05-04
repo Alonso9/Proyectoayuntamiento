@@ -116,4 +116,16 @@ class ProgramaController extends Controller
         $programa->delete();
         return redirect()->route('programa.index');
     }
+
+    public function detallesPrograma($id)
+    {
+        $programa = Programa::findOrFail($id);
+        $actividades = DB::table('actividades')->join('departamentos','departamentos.id','actividades.responsable')
+                                    ->select('actividades.*','departamentos.departamentos')
+                                    ->where('programa_id','=', $id)
+                                    ->orderBy('actividad', 'asc')
+                                    ->paginate(10);
+        return view('programa.detalles', compact('programa', 'actividades'));
+        //  return $actividades;
+    }
 }
