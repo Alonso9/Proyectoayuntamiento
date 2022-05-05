@@ -12,13 +12,13 @@
                 <form action="{{route('actividad.index')}}" method="GET">
                     <div class="form-row">
                         <div class="col-sm-4 my-1">
-                            <label>Buscar Actividad:</label>
+                            <label>Buscar actividad:</label>
                             <input type="text" class="form-control" name="actividad"  placeholder="Nombre de la actividad">
                             <input type="text" value="{{$nombre->id}}" name="programa_id" hidden>
                         </div>
                         <div class="col-auto my-1">
                             <input type="submit" class="btn btn-primary" value="Buscar">
-                            <a href="{{route('crearActividad', $nombre->id)}}" class="btn btn-success">Nuevo</a>
+                            <a href="{{route('crearActividad', $nombre->id)}}" class="btn btn-success">Nueva</a>
                         </div>
                     </div>
                 </form>
@@ -35,6 +35,7 @@
                                 <th>Descripcion</th>
                                 <th>Responsables</th>
                                 <th>Fecha</th>
+                                <th>Subir Evidencia</th>
                                 <th>Detalles</th>
                             </tr>
                         </thead>
@@ -61,7 +62,8 @@
                                 <td>{{$item->descripcion}}</td>
                                 <td>{{$item->departamentos}}</td>
                                 <td>{{$item->fecha}}</td>
-                                <td><a href="{{route('detallesPrograma',$nombre->id)}}}" >Detalles</a></td>
+                                <th><a href="{{route('evidenciaActividad',$item->id)}}">Evidencia</a></th>
+                                <td><a href="{{route('detallesPrograma',$nombre->id)}}" >Detalles</a></td>
                             </tr>
                             @endforeach
                             @endif
