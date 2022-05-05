@@ -5,24 +5,33 @@
 @section('contenido')
 <div>
     @csrf
-    <h2 class="tituloArea">Formulario de creacion de programas</h2>
+    <h2 class="tituloArea">Creacion de programas</h2>
     <div class="container">
         <div class="formulario">
             <form action="{{route('programa.store')}}" method="POST" align='center'>
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <div class="form-group">
-                    <label for="nombre_programa">introduce nombre del programa:</label>
-                    <input name="nombre_programa" type="text" required><br>
+                <div class="formularioCreacionPrograma" class="form-group">
+                    <label class="labelFormulario" for="nombre_programa">Introduce el nombre del programa a crear:</label>
+                    <div class="inputContainer">
+                        <input placeholder="Introduce tu nuevo programa" type="text" class="inputProgramaNuevo" name="nombre_programa" type="text" required><br>
+                    </div>
                 </div>
-                {{-- <div class="form-group">
-                <br><label for="nombre_programa">introduce nombre del programa:</label>
-                <input type="text"  name="nombre_programa" required>
-                <textarea name="nombre_programa" id="nombre_programa" cols="30" rows="10"></textarea>
-            </div> --}}
-                <div class="form-group">
-                    <br><input type="submit" class="btn btn-primary" value="Guardar">
-                    <input type="reset" class="btn btn-warning" value="Cancelar">
-                    <a href="javascript:history.back()">Ir al listado</a>
+                <div class="buttonsContainer">
+                    <br>
+                    <div class="btnGuardarContainer">
+                        <i id="iconoGuardar" class="fa-solid fa-file-arrow-down"></i>
+                        <input class="btnGuardar" type="submit" value="Guardar">
+                    </div>
+
+                    <div class="btnGuardarContainer">
+                        <i id="iconoGuardar" class="fa-solid fa-text-slash"></i>
+                        <input class="btnGuardar" type="reset" value="Resetear">
+                    </div>
+
+                    <div class="btnGuardarContainer">
+                        <i id="iconoGuardar" class="fa-solid fa-delete-left"></i>
+                        <input class="btnGuardar" type="submit" value="Cancelar" onclick="javascript:history.back()">
+                    </div>
                 </div>
 
             </form>

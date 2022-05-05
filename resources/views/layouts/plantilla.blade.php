@@ -11,7 +11,6 @@
   <link href="{{ asset('css/style.css') }}" rel="stylesheet">
   <link rel="icon" href="https://manzanillo.gob.mx/assets/img/escudo_de_armas.png">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:100" rel="stylesheet">
-  {{-- <link href="{{ route('css/app.css') }}" rel="stylesheet"> --}}
   <script src="https://kit.fontawesome.com/107a411e2d.js" crossorigin="anonymous"></script>
 </head>
 </head>

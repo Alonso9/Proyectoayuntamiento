@@ -8,6 +8,7 @@
 
 body {
     background: url('https://manzanillo.gob.mx/assets/img/textura_1.png');
+    width: 100%;
 }
 
 #head {
@@ -96,7 +97,8 @@ body {
 }
 
 .aside {
-    width: 20vw;
+    display: flex;
+    width: 25vw;
     flex-direction: column;
     padding: 10px 20px;
     justify-content: center;
@@ -190,8 +192,8 @@ th{
 }
 
 .section{
-    display: flex;
-    width: 56vw;
+    display: table;
+    width: 58vw;
     border-width: 1px;
     border-color: #0b002200;
     box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.20);
@@ -291,14 +293,88 @@ th{
 
 .formulario{
     width: 40vw;
-    flex-direction: column;
+    display: grid;
     padding: 10px 20px;
     justify-content: center;
+    justify-items: center;
     border-width: 1px;
     border-color: #5b5a5d;
     box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.20);
     border-radius: 10px;
     background-color: #FFF;
     margin-right: 20px;
-    height: 10vw;
+    height: 25vw;
+
+}
+
+.formularioCreacionPrograma{
+    display: grid;
+    width: 25vw;
+}
+
+.labelFormulario{
+    border-width: 1px 5px;
+    border-color: #0b002200;
+    border-radius: 15px;
+    background-color: #b5b5b563;
+    color: black;
+    text-align: center;
+    font-size:larger;
+    font-weight: bolder;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.inputProgramaNuevo {
+    height: 100%;
+    width: 20vw;
+    border-width: 0px;
+    font-weight: bolder;
+}
+
+.inputProgramaNuevo:focus {
+    outline: none;
+}
+
+.buttonsContainer{
+    display: grid;
+    justify-content: center;
+}
+
+.btnGuardarContainer{
+    background-color: #862628;
+    width: 10vw;
+    height: 2.5vw;
+    border-width: 1px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    margin-right: 5px;
+}
+
+.btnGuardar{
+    width: 50%;
+    background-color: #0b002200;
+    border-width: 0px;
+    color: white;
+    font-weight: bolder;
+}
+
+#iconoGuardar {
+    font-size: 15px;
+    margin-left: 20px ;
+    margin-right: 10px;
+    color: white;
+}
+
+.btnNuevoTxtAct {
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 900;
+}
+
+.btnNuevoTxtAct:hover {
+    color: #AAA;
 }
