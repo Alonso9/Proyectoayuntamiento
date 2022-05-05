@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{Actividad,Programa,Departamentos};
+use App\Models\{Actividad,Programa,Departamentos,Evidencias};
 use Illuminate\Support\Facades\DB;
 use DateTime;
 
@@ -90,7 +90,7 @@ class ActividadController extends Controller
         return view('actividad.edit', compact('actividad','departamentos','responsable'));    }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified resource in sto````rage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -153,5 +153,22 @@ class ActividadController extends Controller
     {
         $actividad = Actividad::findOrFail($id);
         return view('actividad.evidenciaActividad', compact('actividad'));
+    }
+
+    public function subirEvidencia(Request $request)
+    {
+        $actividad = Actividad::findOrFail($request->input('actividad_id'));
+
+        // $dt = new DateTime();
+        $evidencia = new Evidencias();
+        $evidencia->actividad_id = $request->input('actividad_id');
+        $evidencia->nombre_archivo = $request->input('nombre');
+        $evidencia->archivo = $request->input('evidencia');
+        $evidencia->descripcion = $request->input('descripcion');
+
+        // $evidencia->fecha = $dt->format('Y-m-d H:i:s');
+        $evidencia->save();
+
+        return redirect()->route('actividadesPrueba', $actividad->programa_id);
     }
 }

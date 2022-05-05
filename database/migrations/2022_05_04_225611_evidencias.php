@@ -19,6 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('actividad_id');
             $table->text('nombre_archivo');
             $table->text('archivo');
+            $table->text('descripcion');
       });
     }
 
