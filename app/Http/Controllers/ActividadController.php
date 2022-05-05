@@ -148,4 +148,10 @@ class ActividadController extends Controller
         $actividad->delete();
         return redirect()->route('actividadesPrueba', $actividad->programa_id);
     }
+
+    public function evidenciaActividad($id)
+    {
+        $actividad = Actividad::findOrFail($id);
+        return view('actividad.evidenciaActividad', compact('actividad'));
+    }
 }
