@@ -6,7 +6,7 @@
     <div class="col-xl-12">
         @csrf
         <h2 align='center'>Formulario de evidencias de la actividad {{$actividad->actividad}}</h2>
-        <form action="{{route('actividad.subirEvidencia')}}" method="POST" align='center'>
+        <form action="{{route('actividad.subirEvidencia',$actividad->id)}}" enctype="multipart/form-data" method="POST" align='center'>
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="form-group">
                 <label for="nombre_actividad">Introduce el nombre de la evidencia:</label>

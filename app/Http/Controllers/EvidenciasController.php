@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\{Actividad,Programa,Departamentos,Evidencias};
+
 
 use Illuminate\Http\Request;
 
@@ -35,6 +37,19 @@ class EvidenciasController extends Controller
     public function store(Request $request)
     {
         //
+        $actividad = Actividad::findOrFail($request->input('actividad_id'));
+
+        // $dt = new DateTime();
+        $evidencia = new Evidencias();
+        $evidencia->actividad_id = $request->input('actividad_id');
+        $evidencia->nombre_archivo = $request->input('nombre');
+        $evidencia->archivo = $request->input('evidencia');
+        $evidencia->descripcion = $request->input('descripcion');
+
+        // $evidencia->fecha = $dt->format('Y-m-d H:i:s');
+        $evidencia->save();
+
+        return redirect()->route('actividadesPrueba', $actividad->programa_id);
     }
 
     /**
@@ -80,5 +95,21 @@ class EvidenciasController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function subirEvidencia(Request $request, $id)
+    {
+        $actividad = Actividad::findOrFail($request->input('actividad_id'));
+
+        // $dt = new DateTime();
+        $evidencia = new Evidencias();
+        $evidencia->actividad_id = $request->input('actividad_id');
+        $evidencia->nombre_archivo = $request->input('nombre');
+        $evidencia->archivo = $request->input('evidencia');
+        $evidencia->descripcion = $request->input('descripcion');
+
+        // $evidencia->fecha = $dt->format('Y-m-d H:i:s');
+        $evidencia->save();
+
+        return redirect()->route('actividadesPrueba', $actividad->programa_id);
     }
 }

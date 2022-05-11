@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 /**************  Rutas del programa ****************/
 Route::resource('programa', ProgramaController::class);
-Route::get('programa\eleminar\{id}', [ProgramaController::class, 'eleminarPrograma'])->name('eleminarPrograma');
+Route::get('programa/eleminar/{id}', [ProgramaController::class, 'eleminarPrograma'])->name('eleminarPrograma');
 Route::get('programa/detalles/{id}', [ProgramaController::class, 'detallesPrograma'])->name('detallesPrograma');
 
 
@@ -30,4 +30,4 @@ Route::get('programa/actividades/{programa_id}/detalles', [ActividadController::
 Route::get('programa/actividades/{programa_id}/crearActividad', [ActividadController::class, 'crearActividad'])->name('crearActividad');
 Route::get('programa/actividades/eleminar/{id}', [ActividadController::class, 'eleminarActividad'])->name('eleminarActividad');
 Route::get('programa/actividades/evidencia/{id}', [ActividadController::class, 'evidenciaActividad'])->name('evidenciaActividad');
-Route::get('programa/actividades/evidencia/crear/{id}', [ActividadController::class, 'subirEvidencia'])->name('subirEvidencia');
+Route::post('programa/actividades/evidencia/crear/{id}', [ActividadController::class, 'subirEvidencia'])->name('actividad.subirEvidencia');

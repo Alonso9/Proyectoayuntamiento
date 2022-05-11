@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\{Actividad,Programa,Departamentos,Evidencias};
 use Illuminate\Support\Facades\DB;
 use DateTime;
-
+use Illuminate\Support\Facades\Storage;
 
 class ActividadController extends Controller
 {
@@ -114,9 +114,22 @@ class ActividadController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
         //
+        $actividad = Actividad::findOrFail($request->input('actividad_id'));
+
+        // $dt = new DateTime();
+        $evidencia = new Evidencias();
+        $evidencia->actividad_id = $request->input('actividad_id');
+        $evidencia->nombre_archivo = $request->input('nombre');
+        $evidencia->archivo = $request->input('evidencia');
+        $evidencia->descripcion = $request->input('descripcion');
+
+        // $evidencia->fecha = $dt->format('Y-m-d H:i:s');
+        $evidencia->save();
+
+        return redirect()->route('actividadesPrueba', $actividad->programa_id);
     }
 
     public function actividadesPrueba($programa_id)
@@ -159,12 +172,16 @@ class ActividadController extends Controller
     {
         $actividad = Actividad::findOrFail($request->input('actividad_id'));
 
+        // dd($request);
         // $dt = new DateTime();
         $evidencia = new Evidencias();
         $evidencia->actividad_id = $request->input('actividad_id');
         $evidencia->nombre_archivo = $request->input('nombre');
-        $evidencia->archivo = $request->input('evidencia');
+        $evidencia->archivo = $request->file('evidencia')->getClientOriginalName();
         $evidencia->descripcion = $request->input('descripcion');
+        $extension = $request->file('evidencia')->getClientOriginalExtension();
+        $nombre = $evidencia->nombre_archivo;
+        Storage::putFileAs('/'.$evidencia->actividad_id.'/', $request->file('evidencia'),$evidencia->nombre_archivo.'.'.$extension);
 
         // $evidencia->fecha = $dt->format('Y-m-d H:i:s');
         $evidencia->save();
