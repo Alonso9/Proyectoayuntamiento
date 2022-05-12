@@ -4,6 +4,7 @@
 
 @section('contenido')
 
+<<<<<<< HEAD
 <h2 class="tituloArea">{{ $nombre->nombre }} / actividades </h2>
 
 <div class="container">
@@ -47,6 +48,41 @@
                     <tbody>
                         @if (count($actividades)<=0) <tr>
                             <td colspan="8">No hay resultados</td>
+=======
+    <div class="container">
+        <h2 align='center'>Actividades del programa {{ $nombre->nombre }}</h2>
+        <div class="row">
+            <div class="col-lx-12">
+                @csrf
+                <form action="{{route('actividad.index')}}" method="GET">
+                    <div class="form-row">
+                        <div class="col-sm-4 my-1">
+                            <label>Buscar actividad:</label>
+                            <input type="text" class="form-control" name="actividad"  placeholder="Nombre de la actividad">
+                            <input type="text" value="{{$nombre->id}}" name="programa_id" hidden>
+                        </div>
+                        <div class="col-auto my-1">
+                            <input type="submit" class="btn btn-primary" value="Buscar">
+                            <a href="{{route('crearActividad', $nombre->id)}}" class="btn btn-success">Nueva</a>
+                        </div>
+                    </div>
+                </form>
+            </div>   
+            <div class="col-lx-12">
+                <div class="table-respon">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Opciones</th>
+                                <th>ID</th>
+                                <th>Id del programa</th>
+                                <th>Nombre</th>
+                                <th>Descripcion</th>
+                                <th>Responsables</th>
+                                <th>Fecha</th>
+                                <th>Subir Evidencia</th>
+                                <th>Detalles</th>
+>>>>>>> 216d3f0c59a5b5faac3b64728493fee42ea1769d
                             </tr>
 
                             @else
@@ -66,7 +102,8 @@
                                 <td>{{$item->descripcion}}</td>
                                 <td>{{$item->departamentos}}</td>
                                 <td>{{$item->fecha}}</td>
-                                <td><a href="{{ route('detalleActividad', $nombre->id) }}">Detalles</a></td>
+                                <th><a href="{{route('evidenciaActividad',$item->id)}}">Evidencia</a></th>
+                                <td><a href="{{route('detallesPrograma',$nombre->id)}}" >Detalles</a></td>
                             </tr>
                             @endforeach
                             @endif

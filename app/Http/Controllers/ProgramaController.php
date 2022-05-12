@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Programa;
+use App\Models\{Programa, Evidencias};
 use Illuminate\Support\Facades\DB;
 use DateTime;
+use Illuminate\Support\Facades\Storage;
+
 
 class ProgramaController extends Controller
 {
@@ -115,5 +117,27 @@ class ProgramaController extends Controller
         $programa = Programa::findOrFail($id);
         $programa->delete();
         return redirect()->route('programa.index');
+    }
+
+    public function detallesPrograma($id)
+    {
+        $programa = Programa::findOrFail($id);
+        $actividades = DB::table('actividades')->join('departamentos','departamentos.id','actividades.responsable')
+                                    // ->join('evidencias', 'actividades.id', 'evidencias.actividad_id')
+                                    ->select('actividades.*','departamentos.departamentos')
+                                    ->where('programa_id','=', $id)
+                                    ->orderBy('actividad', 'asc')
+                                    ->paginate(10);
+
+        $actividades2 = DB::table('actividades')->join('evidencias', 'actividades.id', 'evidencias.actividad_id')
+                                    ->select('actividades.*','evidencias.*')
+                                    ->where('programa_id','=', $id)
+                                    ->orderBy('actividad', 'asc')
+                                    ->paginate(10);
+
+        // $archivos = Storage::setVisibility($actividades2->archivo, '/'.$actividades->id.'/');
+
+        return view('programa.detalles', compact('programa', 'actividades','actividades2'));
+        //  return $actividades;
     }
 }
