@@ -389,16 +389,16 @@ th{
     align-items: center;
     flex-direction: column;
 }
-
+/* 
 #containerForm{
-    /* display: flex;
+    display: flex;
     align-items: center;
     background-color: #fff;
     border-radius: 20px;
     flex-direction: column;
     width: 60vw;
-    box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.10); */
-}
+    box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.10);
+} */
 
 #titleEvidencia{
     font-weight: bold;

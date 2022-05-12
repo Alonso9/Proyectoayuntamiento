@@ -30,4 +30,4 @@ Route::get('programa/actividades/{programa_id}/detalles', [ActividadController::
 Route::get('programa/actividades/{programa_id}/crearActividad', [ActividadController::class, 'crearActividad'])->name('crearActividad');
 Route::get('programa/actividades/eleminar/{id}', [ActividadController::class, 'eleminarActividad'])->name('eleminarActividad');
 Route::get('programa/actividades/evidencia/{id}', [ActividadController::class, 'evidenciaActividad'])->name('evidenciaActividad');
-Route::post('programa/actividades/evidencia/crear/{id}', [ActividadController::class, 'subirEvidencia'])->name('actividad.subirEvidencia');
+Route::get('programa/actividades/evidencia/crear/{id}', [ActividadController::class, 'subirEvidencia'])->name('acitivdad.subirEvidencia');

@@ -4,7 +4,6 @@
 
 @section('contenido')
 
-<<<<<<< HEAD
 <h2 class="tituloArea">{{ $nombre->nombre }} / actividades </h2>
 
 <div class="container">
@@ -22,6 +21,8 @@
                     <div class='inputContainer'>
                         <input type="text" class="inputPrograma" placeholder="Busca un programa" name="actividad">
                         <i id="iconoBuscar" class="fa-solid fa-magnifying-glass-arrow-right" value="Buscar"></i>
+                        <input type="text" class="inputPrograma" placeholder="Busca un programa" name="programa_id" value="{{ $nombre->id }}" hidden>
+                        <input type="submit" value="buscar">
                     </div>
                 </div>
             </div>
@@ -36,8 +37,8 @@
                     <thead>
                         <tr>
                             <th class="tdPrueba">Opciones</th>
-                            <th class="tdPrueba">ID</th>
-                            <th class="tdPrueba">Id programa</th>
+                            {{-- <th class="tdPrueba">ID</th> --}}
+                            {{-- <th class="tdPrueba">Id programa</th> --}}
                             <th class="tdPrueba">Nombre</th>
                             <th class="tdPrueba">Descripcion</th>
                             <th class="tdPrueba">Responsables</th>
@@ -48,41 +49,6 @@
                     <tbody>
                         @if (count($actividades)<=0) <tr>
                             <td colspan="8">No hay resultados</td>
-=======
-    <div class="container">
-        <h2 align='center'>Actividades del programa {{ $nombre->nombre }}</h2>
-        <div class="row">
-            <div class="col-lx-12">
-                @csrf
-                <form action="{{route('actividad.index')}}" method="GET">
-                    <div class="form-row">
-                        <div class="col-sm-4 my-1">
-                            <label>Buscar actividad:</label>
-                            <input type="text" class="form-control" name="actividad"  placeholder="Nombre de la actividad">
-                            <input type="text" value="{{$nombre->id}}" name="programa_id" hidden>
-                        </div>
-                        <div class="col-auto my-1">
-                            <input type="submit" class="btn btn-primary" value="Buscar">
-                            <a href="{{route('crearActividad', $nombre->id)}}" class="btn btn-success">Nueva</a>
-                        </div>
-                    </div>
-                </form>
-            </div>   
-            <div class="col-lx-12">
-                <div class="table-respon">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>Opciones</th>
-                                <th>ID</th>
-                                <th>Id del programa</th>
-                                <th>Nombre</th>
-                                <th>Descripcion</th>
-                                <th>Responsables</th>
-                                <th>Fecha</th>
-                                <th>Subir Evidencia</th>
-                                <th>Detalles</th>
->>>>>>> 216d3f0c59a5b5faac3b64728493fee42ea1769d
                             </tr>
 
                             @else
@@ -96,8 +62,8 @@
                                         <input type="submit" class="btn btn-danger btn-sm" value="Borrar">
                                     </form>
                                 </td>
-                                <td>{{$item->id}}</td>
-                                <td>{{$item->programa_id}}</td>
+                                {{-- <td>{{$item->id}}</td> --}}
+                                {{-- <td>{{$item->programa_id}}</td> --}}
                                 <td>{{$item->actividad}}</td>
                                 <td>{{$item->descripcion}}</td>
                                 <td>{{$item->departamentos}}</td>

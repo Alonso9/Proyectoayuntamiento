@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\{Programa, Evidencias};
 use Illuminate\Support\Facades\DB;
 use DateTime;
+use Illuminate\Contracts\Cache\Store;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -139,5 +140,10 @@ class ProgramaController extends Controller
 
         return view('programa.detalles', compact('programa', 'actividades','actividades2'));
         //  return $actividades;
+    }
+
+    public function verEvidencia()
+    {
+        $evidencia = Storage::disk('koku3.jpg')->exists('');
     }
 }

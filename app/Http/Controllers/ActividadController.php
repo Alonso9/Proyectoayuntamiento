@@ -19,6 +19,8 @@ class ActividadController extends Controller
     {
         $actividad = trim($request->get('actividad'));
         $programa_id = trim($request->get('programa_id'));
+        $programa_id = 1;
+        // dd($programa_id);
         $nombre = Programa::findOrFail($programa_id);
 
         $actividades = DB::table('actividades')->join('departamentos','departamentos.id','actividades.responsable')
